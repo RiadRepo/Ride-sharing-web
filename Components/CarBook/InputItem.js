@@ -46,7 +46,7 @@ export default function InputItem({ type }) {
     <div>
       {" "}
       <GooglePlacesAutocomplete
-        apiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY}
+        // apiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY}
         selectProps={{
           value,
           onChange: (place) => {

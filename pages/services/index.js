@@ -4,6 +4,7 @@ import { useState } from "react";
 import { SourceContext } from "@/context/SourceContext";
 import { DestinationContext } from "@/context/DestinationContext";
 import { useContext } from "react";
+import { LoadScript } from "@react-google-maps/api";
 
 export default function index() {
   const [source, setSource] = useState([]);
@@ -12,11 +13,15 @@ export default function index() {
   return (
     <SourceContext.Provider value={{ source, setSource }}>
       <DestinationContext.Provider value={{ destination, setDestination }}>
-        <div>
-          <NavBar />
-          <Services />
-        </div>
+        <LoadScript libraries={['places']} googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY} >
+          <div>
+            <NavBar />
+            <Services />
+          </div>
+
+        </LoadScript>
+
       </DestinationContext.Provider>
-    </SourceContext.Provider>
+    </SourceContext.Provider >
   );
 }
