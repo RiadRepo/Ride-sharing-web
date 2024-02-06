@@ -1,30 +1,24 @@
 import { Col, Container, Row } from "react-bootstrap";
-
-import { useState } from "react";
+import InputItem from "./InputItem";
 
 export default function CarBook() {
-  const [value, setValue] = useState(null);
+  // const { source, setSource } = useContext(SourceContext);
+  // const { destination, setDestination } = useContext(DestinationContext);
+
   return (
-    <div>
-      <Container>
-        <Row>
-          <Col md={5} className='border'>
-            <div>
-              <h6>Get a ride</h6>
-              {/* <GooglePlacesAutocomplete
-                apiKey=''
-                selectProps={{
-                  value,
-                  onChange: setValue,
-                }}
-              /> */}
-            </div>
-          </Col>
-          <Col md={7} className='border'>
-            Map
-          </Col>
-        </Row>
-      </Container>
-    </div>
+    <Container>
+      <Row>
+        <Col md={5} className='border'>
+          <div>
+            <h4>Get a ride</h4>
+            <InputItem type='source' />
+            <InputItem type='destination' />
+          </div>
+        </Col>
+        <Col md={7} className='border'>
+          Map
+        </Col>
+      </Row>
+    </Container>
   );
 }

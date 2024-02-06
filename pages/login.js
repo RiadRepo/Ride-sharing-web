@@ -34,7 +34,7 @@ export default function Login() {
     const provider = new GoogleAuthProvider();
 
     try {
-      const result = await signInWithPopup(auth, provider); // Use signInWithPopup
+      const result = await signInWithPopup(auth, provider);
       const user = result.user;
       console.log(user);
       sessionStorage.setItem("Token", user.accessToken);

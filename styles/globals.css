@@ -22,3 +22,7 @@ body {
 .btn-danger:hover {
   background-color: #4c51bf; /* Hover state background color */
 }
+
+.custom-text {
+  color: #6c757d; /* This is a similar color to text-gray-600 in Tailwind */
+}
