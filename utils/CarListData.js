@@ -1,0 +1,42 @@
+const carMap = [
+  {
+    id: 1,
+    name: "Sedan",
+    seat: 4,
+    desc: "Comfortable, spacious sedan for family trips",
+    amount: 1.2,
+    image: "https://dummyimage.com/300x200/000/fff&text=Sedan",
+  },
+  {
+    id: 2,
+    name: "SUV",
+    seat: 5,
+    desc: "Versatile SUV for adventures and road trips",
+    amount: 1.5,
+    image: "https://dummyimage.com/300x200/000/fff&text=SUV",
+  },
+  {
+    id: 3,
+    name: "Convertible",
+    seat: 2,
+    desc: "Fun and stylish convertible for a thrilling ride",
+    amount: 1.8,
+    image: "https://dummyimage.com/300x200/000/fff&text=Convertible",
+  },
+  {
+    id: 4,
+    name: "Electric",
+    seat: 4,
+    desc: "Environment-friendly electric car for eco-conscious driving",
+    amount: 2.0,
+    image: "https://dummyimage.com/300x200/000/fff&text=Electric",
+  },
+  {
+    id: 5,
+    name: "Luxury",
+    seat: 5,
+    desc: "Luxurious car with premium features and comfort",
+    amount: 2.5,
+    image: "https://dummyimage.com/300x200/000/fff&text=Luxury",
+  },
+];
