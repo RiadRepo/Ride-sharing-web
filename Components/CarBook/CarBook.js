@@ -5,6 +5,7 @@ import { useContext, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import CarListOptions from "./CarListOptions";
 import InputItem from "./InputItem";
+import Button from "react-bootstrap/Button";
 
 const GooglemapSection = dynamic(
   () => import("../Googlemap/GooglemapSection"), // Replace with the actual path to your GoogleMap component
@@ -21,6 +22,7 @@ export default function CarBook() {
       { lat: source.lat, lng: source.lng },
       { lat: destination.lat, lng: destination.lng }
     );
+
     setDistance(dist * 0.000621374);
   };
   console.log(distance);
@@ -36,8 +38,9 @@ export default function CarBook() {
             <div>
               <InputItem type='destination' />
             </div>
+            <Button className="my-3" onClick={() => calculatedDistance()}>Search</Button>
 
-            <div>{distance ? <CarListOptions /> : null}</div>
+            <div>{distance ? <CarListOptions distance={distance} /> : null}</div>
           </div>
         </Col>
         <Col md={7} className='border  p-4'>
