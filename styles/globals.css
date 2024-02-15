@@ -24,5 +24,9 @@ body {
 }
 
 .custom-text {
-  color: #6c757d; /* This is a similar color to text-gray-600 in Tailwind */
+  color: #000000; /* This is a similar color to text-gray-600 in Tailwind */
+}
+
+.custom-text-1 {
+  color: #c4bef8; /* This is a similar color to text-gray-600 in Tailwind */
 }

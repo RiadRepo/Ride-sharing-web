@@ -1,9 +1,19 @@
 export default function HomeSection() {
   return (
-    <section className='py-5 bg-light' style={{ minHeight: "100%" }}>
+    <section
+      className='py-5 bg-light d-flex justify-content-center '
+      style={{
+        minHeight: "100vh",
+        backgroundImage: `url('/image/hero-1.webp')`, // Replace 'path/to/your/image.jpg' with the actual path to your image
+        backgroundSize: "cover", // Adjust the background size as needed
+        backgroundPosition: "center", // Adjust the background position as needed
+      }}
+    >
       <div className='container text-center'>
-        <h2 className='text-4xl font-bold mb-4'>Welcome to RideShare</h2>
-        <p className='custom-text mb-8'>
+        <h1 className='text-4xl font-bolder mb-4 text-white'>
+          Welcome to Ride Share
+        </h1>
+        <p className='custom-text-1 mb-8 fw-bolder'>
           Your trusted partner for safe and convenient rides.
         </p>
         <div className='row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4'>

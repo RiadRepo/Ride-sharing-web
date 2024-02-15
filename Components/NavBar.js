@@ -26,7 +26,10 @@ export default function NavBar() {
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='mx-auto'>
             <Nav.Link href='/services' className='text-white'>
-              Services
+              Ride
+            </Nav.Link>
+            <Nav.Link href='/drive' className='text-white'>
+              Drive
             </Nav.Link>
             <Nav.Link
               href='/earn-with-share-ride'
