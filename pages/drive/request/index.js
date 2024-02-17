@@ -1,37 +1,50 @@
 // index.js
 import NavBar from "@/Components/NavBar";
 import CarRequest from "@/Components/Request/CarRequest";
+import apiClient from "@/data/apollo-client";
+import REQ_VIEW_QUERY from "@/data/queries/reqView";
+import { useState } from "react";
 
-export default function index({ repo }) {
-  console.log(repo.items);
+export default function index({ data }) {
+  const [selectedRequest, setSelectedRequest] = useState(null);
+
+  const handleCarRequestClick = (request) => {
+    // Set the selected request when a CarRequest is clicked
+    setSelectedRequest(request);
+  };
+
+
   return (
     <div>
       <NavBar />
-      <h1>Car Requests</h1>
-      {repo.items.map((request, index) => (
-        <CarRequest key={index} request={request} />
+
+      <div className="d-flex justify-content-center mt-3">
+        <h1>Car Requests</h1>
+      </div>
+      {data.queryRequestContents.map((request, index) => (
+        <CarRequest
+          key={index}
+          request={request}
+          onClick={handleCarRequestClick}
+        />
       ))}
     </div>
   );
 }
 
 export async function getServerSideProps() {
-  // Fetch data from external API
-  const token = process.env.TOKEN;
+  const { data, errors } = await apiClient().query({
+    query: REQ_VIEW_QUERY,
+    fetchPolicy: "no-cache",
+  });
 
-  const res = await fetch(
-    "https://cloud.squidex.io/api/content/ride-share/request",
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        // Add other headers if needed
-      },
-    }
-  );
-  const repo = await res.json();
+  if (errors) {
+    console.error(errors);
+    // Handle errors as needed
+  } else {
+    // console.log(data);
+    // Process data
+  }
 
-  // console.log(repo);
-
-  // Pass data to the page via props
-  return { props: { repo } };
+  return { props: { data } };
 }

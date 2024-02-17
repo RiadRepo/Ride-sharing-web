@@ -2,8 +2,10 @@ import { authApiClient } from "@/data/apollo-client";
 import ADD_REQ_QUERY from "@/data/queries/reqCar";
 
 export default async function handler(req, res) {
-  const { distance, car, email, userName } = req.body;
-
+  const { distance, car, email, userName, source, destination } = req.body;
+  const sourceName = `${source.label},${source.name} `
+  const destinationName = `${destination.label}, ${destination.name}`
+  console.log(destinationName, sourceName)
   const fare = parseFloat((car?.amount * distance).toFixed(2));
 
   const authClient = await authApiClient();
@@ -14,6 +16,8 @@ export default async function handler(req, res) {
       email,
       fare,
       userName,
+      sourceName,
+      destinationName
     },
   });
 

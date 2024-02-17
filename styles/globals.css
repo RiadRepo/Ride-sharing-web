@@ -1,32 +1,52 @@
 body {
-  background-color: #1a202c; /* Dark background color */
-  color: #cbd5e0; /* Light text color */
+  background-color: #1a202c;
+  /* Dark background color */
+  color: #cbd5e0;
+  /* Light text color */
 }
 
 .form-control {
-  background-color: #2d3748; /* Dark input background color */
-  color: #cbd5e0; /* Light input text color */
+  background-color: #2d3748;
+  /* Dark input background color */
+  color: #cbd5e0;
+  /* Light input text color */
 }
 
 .btn-primary {
-  background-color: #667eea; /* Primary button background color */
-  color: #ffffff; /* Button text color */
+  background-color: #667eea;
+  /* Primary button background color */
+  color: #ffffff;
+  /* Button text color */
 }
 
 .btn-danger {
-  background-color: #e53e3e; /* Danger button background color */
-  color: #ffffff; /* Button text color */
+  background-color: #e53e3e;
+  /* Danger button background color */
+  color: #ffffff;
+  /* Button text color */
 }
 
 .btn-primary:hover,
 .btn-danger:hover {
-  background-color: #4c51bf; /* Hover state background color */
+  background-color: #4c51bf;
+  /* Hover state background color */
 }
 
 .custom-text {
-  color: #000000; /* This is a similar color to text-gray-600 in Tailwind */
+  color: #000000;
+  /* This is a similar color to text-gray-600 in Tailwind */
 }
 
 .custom-text-1 {
-  color: #c4bef8; /* This is a similar color to text-gray-600 in Tailwind */
+  color: #ffffff;
+  /* This is a similar color to text-gray-600 in Tailwind */
+}
+
+.selectedItem {
+  background-color: #e0e0e0;
+  /* Change this to your desired background color */
+}
+
+.pointer {
+  cursor: pointer;
 }

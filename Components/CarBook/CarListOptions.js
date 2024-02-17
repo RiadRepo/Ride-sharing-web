@@ -5,13 +5,18 @@ import { useRouter } from 'next/navigation';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { getAuth } from "firebase/auth";
 import app from "../../firebaseConfig";
+import { useContext } from "react";
+import { DestinationContext } from "@/context/DestinationContext";
+import { SourceContext } from "@/context/SourceContext";
 
 export default function CarListOptions({ distance }) {
   const [activeIndex, setActiveIndex] = useState();
   const [selectedCar, setSelectedCar] = useState([]);
+  const { source, setSource } = useContext(SourceContext);
+  const { destination, setDestination } = useContext(DestinationContext);
   const router = useRouter();
   const auth = getAuth(app);
-
+  console.log(source, destination)
   const [user, loading] = useAuthState(auth);
 
 
@@ -30,6 +35,8 @@ export default function CarListOptions({ distance }) {
         },
         body: JSON.stringify({
           distance,
+          source,
+          destination,
           car: selectedCar,
           email: user.email,
           userName: user.displayName,

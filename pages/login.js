@@ -21,7 +21,7 @@ export default function Login() {
   const signIn = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((response) => {
-        console.log(response.user);
+
         sessionStorage.setItem("Token", response.user.accessToken);
         router.push("/");
       })
@@ -36,9 +36,9 @@ export default function Login() {
     try {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
-      console.log(user);
+
       sessionStorage.setItem("Token", user.accessToken);
-      router.push("/");
+      // router.push("/");
     } catch (error) {
       console.error("Google Sign-In Error:", error.message);
     }

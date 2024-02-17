@@ -1,10 +1,11 @@
 import getSquidexApiToken from "@/utils/getSquidexApiToken";
 import {
-  ApolloClient,
   ApolloLink,
   HttpLink,
   InMemoryCache,
 } from "@apollo/client";
+
+import { ApolloClient } from "@apollo/client";
 
 let token = null;
 let apolloClient = undefined;
@@ -25,6 +26,7 @@ const authLink = new ApolloLink((operation, forward) => {
   });
   return forward(operation);
 });
+
 
 export const authApiClient = async () => {
   token = await getSquidexApiToken();

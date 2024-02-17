@@ -5,6 +5,8 @@ mutation (
     $userName: String, 
     $fare:  Float, 
     $distance:  Float, 
+    $destinationName: String,
+    $sourceName: String,
 
    ) {
     createRequestContent(
@@ -13,6 +15,8 @@ mutation (
         userName: {iv: $userName},
         fare: {iv: $fare},
         distance: {iv: $distance},
+        destinationName:{iv: $destinationName}
+        sourceName: {iv: $sourceName}
        
        
     }
@@ -24,7 +28,8 @@ mutation (
         userName
         fare
         email
-      
+        destinationName
+        sourceName
       }
     }
   }

@@ -17,6 +17,7 @@ export default function CarBook() {
   const { source, setSource } = useContext(SourceContext);
   const { destination, setDestination } = useContext(DestinationContext);
   const [distance, setDistance] = useState();
+  // console.log(source)
   const calculatedDistance = () => {
     const dist = google.maps.geometry.spherical.computeDistanceBetween(
       { lat: source.lat, lng: source.lng },
@@ -25,7 +26,7 @@ export default function CarBook() {
 
     setDistance(dist * 0.000621374);
   };
-  console.log(distance);
+  // console.log(distance);
   return (
     <Container>
       <Row>

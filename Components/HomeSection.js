@@ -10,17 +10,17 @@ export default function HomeSection() {
       }}
     >
       <div className='container text-center'>
-        <h1 className='text-4xl font-bolder mb-4 text-white'>
+        <h1 className=' font-bolder mt-3 mb-4 text-white' style={{ fontSize: '5rem' }}>
           Welcome to Ride Share
         </h1>
-        <p className='custom-text-1 mb-8 fw-bolder'>
+        <p className='custom-text-1 mb-5 fw-bolder'>
           Your trusted partner for safe and convenient rides.
         </p>
         <div className='row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4'>
           <div className='col'>
             <div className='card'>
               <div className='card-body'>
-                <h3 className='card-title text-2xl font-semibold mb-4'>
+                <h3 className='card-title text-2xl fw-bold mb-4'>
                   Book a Ride
                 </h3>
                 <p className='card-text custom-text'>
@@ -33,7 +33,7 @@ export default function HomeSection() {
           <div className='col'>
             <div className='card'>
               <div className='card-body'>
-                <h3 className='card-title text-2xl font-semibold mb-4'>
+                <h3 className='card-title text-2xl fw-bold mb-4'>
                   Track Your Ride
                 </h3>
                 <p className='card-text custom-text'>
@@ -46,7 +46,7 @@ export default function HomeSection() {
           <div className='col'>
             <div className='card'>
               <div className='card-body'>
-                <h3 className='card-title text-2xl font-semibold mb-4'>
+                <h3 className='card-title text-2xl fw-bold mb-4'>
                   Affordable Rates
                 </h3>
                 <p className='card-text custom-text'>

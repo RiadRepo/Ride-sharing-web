@@ -23,7 +23,7 @@ export default function InputItem({ type }) {
     );
     service.getDetails({ placeId }, (place, status) => {
       if (status === "OK" && place.geometry && place.geometry.location) {
-        console.log(place.geometry.location.lat());
+
         if (type == "source") {
           setSource({
             lat: place.geometry.location.lat(),

@@ -4,7 +4,7 @@ export const CarListData = [
     name: "Sedan",
     seat: 4,
     desc: "Comfortable, spacious sedan for family trips",
-    amount: 32,
+    amount: 42,
     image: "/image/UberX_v1.png",
   },
   {
@@ -12,7 +12,7 @@ export const CarListData = [
     name: "SUV",
     seat: 5,
     desc: "Versatile SUV for adventures and road trips",
-    amount: 35,
+    amount: 45,
     image: "/image/UberComfort.png",
   },
   {
@@ -20,7 +20,7 @@ export const CarListData = [
     name: "Convertible",
     seat: 2,
     desc: "Fun and stylish convertible for a thrilling ride",
-    amount: 38,
+    amount: 48,
     image: "/image/UberX_Pet.png",
   },
   {
@@ -28,7 +28,7 @@ export const CarListData = [
     name: "Electric",
     seat: 4,
     desc: "Environment-friendly electric car for eco-conscious driving",
-    amount: 40,
+    amount: 50,
     image: "/image/UberXL_New.png",
   },
   {
@@ -36,7 +36,7 @@ export const CarListData = [
     name: "Luxury",
     seat: 5,
     desc: "Luxurious car with premium features and comfort",
-    amount: 45,
+    amount: 55,
     image: "/image/UberXL_New.png",
   },
 ];
