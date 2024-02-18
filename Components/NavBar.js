@@ -13,12 +13,6 @@ export default function NavBar() {
     <Navbar bg='dark' variant='dark' expand='lg'>
       <Container>
         <Navbar.Brand href='/' className='d-flex align-items-center'>
-          {/* <img
-            src='/your-logo.png' // Replace with the path to your logo
-            alt='Logo'
-            height='30'
-            className='d-inline-block align-top mr-2'
-          /> */}
           <p className=' text-center py-2 fw-bolder text-2xl'>{"Ride Share"}</p>
         </Navbar.Brand>
 

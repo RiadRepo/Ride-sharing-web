@@ -1,3 +1,4 @@
+import Footer from "@/Components/Footer";
 import HomeSection from "@/Components/HomeSection";
 import NavBar from "@/Components/NavBar";
 import { getAuth } from "firebase/auth";
@@ -28,6 +29,7 @@ export default function Home() {
     <>
       <NavBar />
       <HomeSection />
+      <Footer />
     </>
   );
 }

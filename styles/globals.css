@@ -50,3 +50,11 @@ body {
 .pointer {
   cursor: pointer;
 }
+
+.copyright-paragraph {
+  order: 2;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+  color: #ffffff;
+  opacity: 1.6;
+}
