@@ -21,7 +21,6 @@ export default function Login() {
   const signIn = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((response) => {
-
         sessionStorage.setItem("Token", response.user.accessToken);
         router.push("/");
       })
@@ -38,7 +37,7 @@ export default function Login() {
       const user = result.user;
 
       sessionStorage.setItem("Token", user.accessToken);
-      // router.push("/");
+      router.push("/");
     } catch (error) {
       console.error("Google Sign-In Error:", error.message);
     }
@@ -60,14 +59,15 @@ export default function Login() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <main
+        className='bg-dark'
         style={{
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          minHeight: "100%",
+          minHeight: "100vh",
         }}
       >
-        <div>
+        <div className='border p-5'>
           <h1 className='text-3xl font-semibold mb-4 text-primary text-center'>
             Login
           </h1>
