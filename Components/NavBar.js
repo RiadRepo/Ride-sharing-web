@@ -1,8 +1,19 @@
 import { useRouter } from "next/router";
 import { Container, Nav, Navbar } from "react-bootstrap";
+import { useState, useEffect } from "react";
 
 export default function NavBar() {
   const router = useRouter();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const checkLoggedIn = () => {
+      const token = sessionStorage.getItem("Token");
+      setIsLoggedIn(!!token);
+    };
+
+    checkLoggedIn();
+  }, []);
 
   const logout = () => {
     sessionStorage.removeItem("Token");
@@ -10,7 +21,7 @@ export default function NavBar() {
   };
 
   return (
-    <Navbar bg='dark' variant='dark' expand='lg'>
+    <Navbar bg='dark' variant='dark' expand='lg' className="bg-black border-bottom">
       <Container>
         <Navbar.Brand href='/' className='d-flex align-items-center'>
           <p className=' text-center py-2 fw-bolder text-2xl'>{"Ride Share"}</p>
@@ -19,7 +30,7 @@ export default function NavBar() {
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='mx-auto'>
-            <Nav.Link href='/services' className='text-white'>
+            <Nav.Link href='/select-vehicle' className='text-white'>
               Ride
             </Nav.Link>
             <Nav.Link href='/drive' className='text-white'>
@@ -40,13 +51,24 @@ export default function NavBar() {
           </Nav>
 
           <Nav className='ml-auto'>
-            <button
-              onClick={logout}
-              type='button'
-              className='btn btn-outline-light rounded-pill'
-            >
-              Log Out
-            </button>
+            {isLoggedIn ? (
+              <>
+                <button
+                  onClick={logout}
+                  type='button'
+                  className='btn btn-outline-light rounded-pill mr-2'
+                >
+                  Log Out
+                </button>
+                <Nav.Link href='/drive-profile' className='text-white border rounded-5'>
+                  Drive Profile
+                </Nav.Link>
+              </>
+            ) : (
+              <Nav.Link href='/login' className='text-white border rounded-5'>
+                Log In
+              </Nav.Link>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>

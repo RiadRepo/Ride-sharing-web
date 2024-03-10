@@ -8,29 +8,33 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import app from "../firebaseConfig";
+import HomeSection from "@/Components/HomeSection";
+import TellUs from "@/Components/Home/TellUs";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  let router = useRouter();
+  // let router = useRouter();
 
-  const auth = getAuth(app);
+  // const auth = getAuth(app);
 
-  const [user, loading] = useAuthState(auth);
-  useEffect(() => {
-    let token = sessionStorage.getItem("Token");
+  // const [user, loading] = useAuthState(auth);
+  // useEffect(() => {
+  //   let token = sessionStorage.getItem("Token");
 
-    if (token) {
-      router.push("/");
-    }
-    if (!token) {
-      router.push("/login");
-    }
-  }, []);
+  //   if (token) {
+  //     router.push("/");
+  //   }
+  //   if (!token) {
+  //     router.push("/login");
+  //   }
+  // }, []);
   return (
     <>
       <NavBar />
       <HeroSection />
       <DriveSection />
+      <HomeSection />
+      <TellUs />
       <Footer />
     </>
   );

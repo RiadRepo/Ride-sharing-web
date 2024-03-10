@@ -6,7 +6,7 @@ export default function Drive() {
       className='d-flex align-items-center justify-content-center '
       style={{ height: "100vh" }}
     >
-      <Button href='/drive/request'>Show Ride Request</Button>
+      <Button href='/drive/request' size="lg">Show Ride Request</Button>
     </div>
   );
 }

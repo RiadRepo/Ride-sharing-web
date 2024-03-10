@@ -6,7 +6,7 @@ export default function EarnWithShareRide() {
       style={{ minHeight: "80vh" }}
       className='d-flex justify-content-center align-items-center'
     >
-      <Button>Become a driver</Button>
+      <h2 style={{ fontSize: "4.5rem" }}>Earn Became a Driver</h2>
     </div>
   );
 }

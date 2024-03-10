@@ -1,17 +1,17 @@
 export default function HomeSection() {
   return (
     <section
-      className='py-5 bg-light d-flex justify-content-center '
-      style={{
-        minHeight: "100vh",
-        backgroundImage: `url('/image/hero-1.webp')`, // Replace 'path/to/your/image.jpg' with the actual path to your image
-        backgroundSize: "cover", // Adjust the background size as needed
-        backgroundPosition: "center", // Adjust the background position as needed
-      }}
+      className='py-5 bg-light d-flex justify-content-center bg-black'
+    // style={{
+    //   minHeight: "100vh",
+    //   backgroundImage: `url('/image/hero-1.webp')`, // Replace 'path/to/your/image.jpg' with the actual path to your image
+    //   backgroundSize: "cover", // Adjust the background size as needed
+    //   backgroundPosition: "center", // Adjust the background position as needed
+    // }}
     >
       <div className='container text-center'>
         <h1 className=' font-bolder mt-3 mb-4 text-white' style={{ fontSize: '5rem' }}>
-          Welcome to Ride Share
+          How it works
         </h1>
         <p className='custom-text-1 mb-5 fw-bolder'>
           Your trusted partner for safe and convenient rides.

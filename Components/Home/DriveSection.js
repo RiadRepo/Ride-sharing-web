@@ -1,7 +1,14 @@
 import Image from "next/image";
 import { Button, Col, Container, Row } from "react-bootstrap";
+import { useRouter } from "next/router";
 
 export default function DriveSection() {
+  const router = useRouter();
+
+  const handleGetStarted = () => {
+    // Navigate to the "/services" route
+    router.push("/drive");
+  };
   return (
     <div className='bg-white py-5'>
       <Container>
@@ -28,7 +35,7 @@ export default function DriveSection() {
                   Make money on your schedule with deliveries or rides—or both.
                   You can use your own car or choose a rental through Uber.
                 </p>
-                <Button variant='dark' className=''>
+                <Button variant='dark' className='' onClick={handleGetStarted}>
                   Get Started
                 </Button>
               </div>

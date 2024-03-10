@@ -64,7 +64,8 @@ export default function CarListOptions({ distance }) {
       {CarListData.map((items, index) => (
         <div
           key={index}
-          className={` ${activeIndex === index ? 'border border-3' : ''}`}
+          style={{ cursor: "pointer" }}
+          className={` ${activeIndex === index ? 'border border-3 ' : ''}`}
           onClick={() => { setActiveIndex(index); setSelectedCar(items) }}>
           <CarListItem car={items} distance={distance} />
         </div>

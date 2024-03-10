@@ -32,14 +32,14 @@ export default function CarBook() {
       <Row>
         <Col md={5} className='border p-4'>
           <div>
-            <h4 className='fw-bold'>Get a ride</h4>
+            <h4 className='fw-bold'>Always the ride you want</h4>
             <div className='mb-3'>
               <InputItem type='source' />
             </div>
             <div>
               <InputItem type='destination' />
             </div>
-            <Button className="my-3" onClick={() => calculatedDistance()}>Search</Button>
+            <Button className="my-3" variant="dark" onClick={() => calculatedDistance()}>Search</Button>
 
             <div>{distance ? <CarListOptions distance={distance} /> : null}</div>
           </div>
