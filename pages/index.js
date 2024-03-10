@@ -1,5 +1,6 @@
 import Footer from "@/Components/Footer";
-import HomeSection from "@/Components/HomeSection";
+import DriveSection from "@/Components/Home/DriveSection";
+import HeroSection from "@/Components/Home/HeroSection";
 import NavBar from "@/Components/NavBar";
 import { getAuth } from "firebase/auth";
 import { Inter } from "next/font/google";
@@ -28,7 +29,8 @@ export default function Home() {
   return (
     <>
       <NavBar />
-      <HomeSection />
+      <HeroSection />
+      <DriveSection />
       <Footer />
     </>
   );
