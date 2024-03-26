@@ -1,10 +1,15 @@
 import { useRouter } from "next/router";
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Container, Nav, Navbar, Popover } from "react-bootstrap";
 import { useState, useEffect } from "react";
 
 export default function NavBar() {
   const router = useRouter();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [popoverOpen, setPopoverOpen] = useState(false);
+
+  const togglePopover = () => {
+    setPopoverOpen(!popoverOpen);
+  };
 
   useEffect(() => {
     const checkLoggedIn = () => {
@@ -53,6 +58,13 @@ export default function NavBar() {
           <Nav className='ml-auto'>
             {isLoggedIn ? (
               <>
+
+                <Nav.Link href='/user-profile' className='text-white border rounded-5'>
+                  User Profile
+                </Nav.Link>
+                <Nav.Link href='/drive-profile' className='text-white border rounded-5'>
+                  Drive Profile
+                </Nav.Link>
                 <button
                   onClick={logout}
                   type='button'
@@ -60,9 +72,6 @@ export default function NavBar() {
                 >
                   Log Out
                 </button>
-                <Nav.Link href='/drive-profile' className='text-white border rounded-5'>
-                  Drive Profile
-                </Nav.Link>
               </>
             ) : (
               <Nav.Link href='/login' className='text-white border rounded-5'>
