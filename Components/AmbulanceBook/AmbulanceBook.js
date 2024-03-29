@@ -3,8 +3,8 @@ import { SourceContext } from "@/context/SourceContext";
 import dynamic from "next/dynamic";
 import { useContext, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import BikeListOptions from "../BikeBook/BikeListOptions";
-import InputItem from "../BikeBook/InputItem";
+import AmbulanceListOptions from "../AmbulanceBook/AmbulanceListOptions";
+import InputItem from "../AmbulanceBook/InputItem";
 import Button from "react-bootstrap/Button";
 
 const GooglemapSection = dynamic(
@@ -13,7 +13,7 @@ const GooglemapSection = dynamic(
 );
 // import GooglemapSection from "../Googlemap/GooglemapSection";
 
-export default function BikeBook() {
+export default function AmbulanceBook() {
     const { source, setSource } = useContext(SourceContext);
     const { destination, setDestination } = useContext(DestinationContext);
     const [distance, setDistance] = useState();
@@ -41,7 +41,7 @@ export default function BikeBook() {
                         </div>
                         <Button className="my-3" variant="dark" onClick={() => calculatedDistance()}>Search</Button>
 
-                        <div>{distance ? <BikeListOptions distance={distance} /> : null}</div>
+                        <div>{distance ? <AmbulanceListOptions distance={distance} /> : null}</div>
                     </div>
                 </Col>
                 <Col md={7} className='border  p-4'>
