@@ -79,8 +79,9 @@ export default function Login() {
                     },
                     body: JSON.stringify({
 
-                        email: "test",
-                        // userName: user.displayName,
+                        email: user.email,
+                        userName: user.displayName,
+                        // user: user
                         // Include the user's email
                         // Add any additional data you want to send
                     }),
