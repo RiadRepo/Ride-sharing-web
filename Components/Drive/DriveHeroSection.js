@@ -7,7 +7,7 @@ export default function DriveHeroSection() {
   const router = useRouter();
   const handleGetStarted = () => {
     // Navigate to the "/services" route
-    router.push("/login");
+    router.push("/driver-login");
   };
   return (
     <div className='bg-black py-5'>

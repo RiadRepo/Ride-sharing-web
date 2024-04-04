@@ -74,7 +74,7 @@ export default function Login() {
       >
         <div className='border p-5'>
           <h1 className='text-3xl font-semibold mb-4 text-primary text-center'>
-            Login
+            User Login
           </h1>
           <div>
             <input
