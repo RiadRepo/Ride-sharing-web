@@ -1,10 +1,10 @@
 import DriveProfile from "@/Components/DriveProfile/DriveProfile";
-import Footer from "@/Components/Footer";
-import NavBar from "@/Components/NavBar";
 import axios from "axios";
 import { useEffect } from "react";
 // import apiClient from "@/data/apollo-client";
 // import GET_DRIVE_QUERY from "@/data/queries/get-drive-profile";
+import DriveFooter from "@/Components/DriveFooter";
+import DriveNavBar from "@/Components/DriveNavBar";
 import { getAuth } from "firebase/auth";
 import { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -47,6 +47,7 @@ export default function index() {
     }
   }, [user]);
   console.log(resState);
+  let register = "driver";
   //   useEffect(async () => {
   //     const getMail = await getSession();
   //     const email = getMail?.email;
@@ -63,9 +64,9 @@ export default function index() {
 
   return (
     <div>
-      <NavBar />
+      <DriveNavBar />
       <DriveProfile data={resState} />
-      <Footer />
+      <DriveFooter />
     </div>
   );
 }

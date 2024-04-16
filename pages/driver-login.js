@@ -8,6 +8,7 @@ import {
   signInWithPopup, // Add this import
 } from "firebase/auth";
 import Head from "next/head";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import app from "../firebaseConfig"; // Import the Firebase configuration
@@ -159,6 +160,13 @@ export default function Login() {
           >
             Sign In with Google
           </button>
+
+          <div className='text-white py-3'>
+            Do You Want To Login As A User?{" "}
+            <Link href='/login' className='footer-p'>
+              Click Here
+            </Link>{" "}
+          </div>
         </div>
       </main>
       <Footer />
