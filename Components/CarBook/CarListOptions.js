@@ -1,13 +1,12 @@
-import { CarListData } from "@/utils/CarListData";
-import CarListItem from "./CarListItem";
-import { useEffect, useState } from "react";
-import { useRouter } from 'next/navigation';
-import { useAuthState } from "react-firebase-hooks/auth";
-import { getAuth } from "firebase/auth";
-import app from "../../firebaseConfig";
-import { useContext } from "react";
 import { DestinationContext } from "@/context/DestinationContext";
 import { SourceContext } from "@/context/SourceContext";
+import { CarListData } from "@/utils/CarListData";
+import { getAuth } from "firebase/auth";
+import { useRouter } from "next/navigation";
+import { useContext, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import app from "../../firebaseConfig";
+import CarListItem from "./CarListItem";
 
 export default function CarListOptions({ distance }) {
   const [activeIndex, setActiveIndex] = useState();
@@ -16,22 +15,21 @@ export default function CarListOptions({ distance }) {
   const { destination, setDestination } = useContext(DestinationContext);
   const router = useRouter();
   const auth = getAuth(app);
-  console.log(source, destination)
+  console.log(source, destination);
   const [user, loading] = useAuthState(auth);
-
 
   const handleRequest = async () => {
     try {
       if (!user) {
-        console.error('User not authenticated.');
+        console.error("User not authenticated.");
         return;
       }
 
       // Replace 'api/searching' with your actual API endpoint
-      const response = await fetch('/api/searching', {
-        method: 'POST',
+      const response = await fetch("/api/searching", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           distance,
@@ -40,6 +38,7 @@ export default function CarListOptions({ distance }) {
           car: selectedCar,
           email: user.email,
           userName: user.displayName,
+          vehicleType: "car",
           // Include the user's email
           // Add any additional data you want to send
         }),
@@ -48,15 +47,14 @@ export default function CarListOptions({ distance }) {
       // Check if the request was successful (status code 2xx)
       if (response.ok) {
         // Redirect to the searching page
-        router.push('/searching');
+        router.push("/searching");
       } else {
-        console.error('Request failed:', response.statusText);
+        console.error("Request failed:", response.statusText);
       }
     } catch (error) {
-      console.error('Error:', error.message);
+      console.error("Error:", error.message);
     }
   };
-
 
   return (
     <div>
@@ -65,8 +63,12 @@ export default function CarListOptions({ distance }) {
         <div
           key={index}
           style={{ cursor: "pointer" }}
-          className={` ${activeIndex === index ? 'border border-3 ' : ''}`}
-          onClick={() => { setActiveIndex(index); setSelectedCar(items) }}>
+          className={` ${activeIndex === index ? "border border-3 " : ""}`}
+          onClick={() => {
+            setActiveIndex(index);
+            setSelectedCar(items);
+          }}
+        >
           <CarListItem car={items} distance={distance} />
         </div>
       ))}
@@ -83,5 +85,4 @@ export default function CarListOptions({ distance }) {
       ) : null}
     </div>
   );
-
 }
