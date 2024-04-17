@@ -20,7 +20,7 @@ export default function CarRequest({ request }) {
   };
 
   return (
-    <div className="container border">
+    <div className="container border ">
       <div className="m-3"
       >
         <div >

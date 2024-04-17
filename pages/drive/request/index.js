@@ -1,5 +1,6 @@
 // index.js
-import NavBar from "@/Components/NavBar";
+import DriveFooter from "@/Components/DriveFooter";
+import DriveNavBar from "@/Components/DriveNavBar";
 import CarRequest from "@/Components/Request/CarRequest";
 import apiClient from "@/data/apollo-client";
 import REQ_VIEW_QUERY from "@/data/queries/reqView";
@@ -13,21 +14,24 @@ export default function index({ data }) {
     setSelectedRequest(request);
   };
 
-
   return (
     <div>
-      <NavBar />
+      <DriveNavBar />
 
-      <div className="d-flex justify-content-center mt-3">
+      <div className='d-flex justify-content-center my-3'>
         <h1>Car Requests</h1>
       </div>
-      {data.queryRequestContents.map((request, index) => (
-        <CarRequest
-          key={index}
-          request={request}
-          onClick={handleCarRequestClick}
-        />
-      ))}
+      <div className='mb-5'>
+        {data.queryRequestContents.map((request, index) => (
+          <CarRequest
+            key={index}
+            request={request}
+            onClick={handleCarRequestClick}
+          />
+        ))}
+      </div>
+
+      <DriveFooter />
     </div>
   );
 }
