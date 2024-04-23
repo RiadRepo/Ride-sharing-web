@@ -6,8 +6,15 @@ export default async function handler(req, res) {
     req.body;
   const sourceName = `${source.label},${source.name} `;
   const destinationName = `${destination.label}, ${destination.name}`;
-  console.log(destinationName, sourceName);
+
   const fare = parseFloat((car?.amount * distance).toFixed(2));
+
+  const sources = {
+    latitude: parseFloat(source.lat),
+    longitude: parseFloat(source.lng),
+  };
+
+  console.log(sources);
 
   const authClient = await authApiClient();
   const { data, errors } = await authClient.mutate({
@@ -20,6 +27,7 @@ export default async function handler(req, res) {
       sourceName,
       destinationName,
       vehicleType,
+      sources,
     },
   });
 

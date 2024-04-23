@@ -1,11 +1,12 @@
 import { gql } from "@apollo/client";
 const GET_DRIVE_QUERY = gql`
-query ($filter: String!) {
+  query ($filter: String!) {
     queryDriverContents(filter: $filter) {
       id
       flatData {
         name
         email
+        myLocation
       }
     }
   }
