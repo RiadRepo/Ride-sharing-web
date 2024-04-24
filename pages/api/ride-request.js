@@ -28,14 +28,14 @@ export default async function handler(req, res) {
       fetchPolicy: "no-cache",
     });
     console.log(value);
-    if (data.queryRequestContents.length > 0) {
+    if (value.length > 0) {
       res.status(200).json({
         message: "Thank you for your response.",
         data: data?.queryRequestContents,
       });
     } else {
-      res.status(401).json({
-        message: "You Dont Have Any Request",
+      res.status(201).json({
+        message: "You Don't Have Any Request",
       });
     }
   } else {

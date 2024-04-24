@@ -15,7 +15,7 @@ export default function index({ data }) {
   const auth = getAuth(app);
   const [source, setSource] = useState([]);
   const [user, loading] = useAuthState(auth);
-  const [resState, setResState] = useState({});
+  const [resState, setResState] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -59,39 +59,23 @@ export default function index({ data }) {
       <div className='d-flex justify-content-center my-3'>
         <h1>Car Requests</h1>
       </div>
-      <div className='mb-5'>
-        {data.queryRequestContents.map((request, index) => (
-          <CarRequest
-            key={index}
-            request={request}
-            onClick={handleCarRequestClick}
-          />
-        ))}
+      <div className='mb-5' style={{ minHeight: "400px" }}>
+        {resState.length === 0 ? (
+          <p className="text-center mb-5 pb-5">You don't have any request.</p>
+        ) : (
+          resState.map((request, index) => (
+            <CarRequest
+              key={index}
+              request={request}
+              onClick={handleCarRequestClick}
+            />
+          ))
+        )}
       </div>
 
       <DriveFooter />
     </div>
   );
+
 }
 
-export async function getServerSideProps() {
-  const Filter = `geo.distance(data/sources/iv, geography'POINT(90.39466089121072 23.753170678858456)') lt 5000`;
-
-  const { data, errors } = await apiClient().query({
-    query: REQ_VIEW_QUERY,
-    variables: {
-      filter: Filter,
-    },
-    fetchPolicy: "no-cache",
-  });
-
-  if (errors) {
-    console.error(errors);
-    // Handle errors as needed
-  } else {
-    // console.log(data);
-    // Process data
-  }
-
-  return { props: { data } };
-}
