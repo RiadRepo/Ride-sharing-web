@@ -5,14 +5,15 @@ import { useEffect } from "react";
 // import GET_DRIVE_QUERY from "@/data/queries/get-drive-profile";
 import DriveFooter from "@/Components/DriveFooter";
 import DriveNavBar from "@/Components/DriveNavBar";
+import { SourceContext } from "@/context/SourceContext";
+import { LoadScript } from "@react-google-maps/api";
 import { getAuth } from "firebase/auth";
 import { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import app from "../../firebaseConfig";
-
 export default function index() {
   const auth = getAuth(app);
-
+  const [source, setSource] = useState([]);
   const [user, loading] = useAuthState(auth);
   const [resState, setResState] = useState({});
   console.log(user?.email);
@@ -63,11 +64,19 @@ export default function index() {
   console.log("test", resState);
 
   return (
-    <div>
-      <DriveNavBar />
-      <DriveProfile data={resState} />
-      <DriveFooter />
-    </div>
+    <SourceContext.Provider value={{ source, setSource }}>
+      {" "}
+      <LoadScript
+        libraries={["places"]}
+        googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY}
+      >
+        <div>
+          <DriveNavBar />
+          <DriveProfile data={resState} />
+          <DriveFooter />
+        </div>
+      </LoadScript>
+    </SourceContext.Provider>
   );
 }
 

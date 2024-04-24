@@ -1,5 +1,15 @@
+import dynamic from "next/dynamic";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+// import MyLoaction from "../Googlemap/MyLoaction";
+import { SourceContext } from "@/context/SourceContext";
+import { useContext } from "react";
+import InputSource from "./InputSource";
+
+const MyLoaction = dynamic(
+  () => import("../Googlemap/MyLoaction"), // Replace with the actual path to your GoogleMap component
+  { ssr: false }
+);
 
 export default function DriverDetails({ data, onSave }) {
   const {
@@ -8,15 +18,20 @@ export default function DriverDetails({ data, onSave }) {
     formState: { errors },
     reset,
   } = useForm();
-
+  const { source, setSource } = useContext(SourceContext);
   const onSubmit = async (formData) => {
+    let driverData = {
+      source: source,
+      formData: formData,
+    };
+
     try {
       const response = await fetch("/api/update-driver-data", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(driverData),
       });
 
       if (!response.ok) {
@@ -65,10 +80,10 @@ export default function DriverDetails({ data, onSave }) {
         <option value='' disabled>
           Choose vehicle type
         </option>
-        <option value='Car'>Car</option>
-        <option value='Bike'>Bike</option>
-        <option value='Ambulance'>Ambulance</option>
-        <option value='CNG'>CNG</option>
+        <option value='car'>Car</option>
+        <option value='bike'>Bike</option>
+        <option value='ambulance'>Ambulance</option>
+        <option value='cng'>CNG</option>
       </Form.Select>
       {errors?.vehicleType && (
         <p style={{ color: "red" }}>Please select a vehicle type.</p>
@@ -94,6 +109,10 @@ export default function DriverDetails({ data, onSave }) {
         />
       </Form.Group>
 
+      <Form.Label>My Location</Form.Label>
+
+      <InputSource />
+      <MyLoaction />
       <Button variant='primary' type='submit'>
         Save
       </Button>

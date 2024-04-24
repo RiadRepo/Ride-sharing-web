@@ -7,6 +7,10 @@ const GET_DRIVE_QUERY = gql`
         name
         email
         myLocation
+        isVerified
+        vehicle {
+          vehicleType
+        }
       }
     }
   }

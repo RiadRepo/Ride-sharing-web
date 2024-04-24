@@ -9,10 +9,11 @@ export default async function handler(req, res) {
 
   const fare = parseFloat((car?.amount * distance).toFixed(2));
 
-  const sources = {
+  const sourcesMap = {
     latitude: parseFloat(source.lat),
     longitude: parseFloat(source.lng),
   };
+  const sources = JSON.stringify(sourcesMap);
 
   console.log(sources);
 
@@ -30,7 +31,7 @@ export default async function handler(req, res) {
       sources,
     },
   });
-
+console.log(errors)
   // // res.status(200).json(data?.createProductContent);
   if (errors === undefined) {
     res.status(200).json({

@@ -32,7 +32,6 @@ const ADD_REQ_QUERY = gql`
         destinationName
         sourceName
         vehicleType
-        
       }
     }
   }

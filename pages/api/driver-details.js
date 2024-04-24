@@ -4,7 +4,6 @@ import apiClient from "@/data/apollo-client";
 import GET_DRIVE_QUERY from "@/data/queries/get-drive-profile";
 
 export default async function handler(req, res) {
-  console.log("test req", req.body);
   const email = req.body.email;
   const filter = `data/email/iv eq '${email}'`;
   const { data } = await apiClient().query({
