@@ -18,9 +18,11 @@ export default function DriverDetails({ data, onSave }) {
     formState: { errors },
     reset,
   } = useForm();
+  console.log(data?.data?.[0]?.id);
   const { source, setSource } = useContext(SourceContext);
   const onSubmit = async (formData) => {
     let driverData = {
+      ids: data?.data?.[0]?.id,
       source: source,
       formData: formData,
     };
@@ -58,6 +60,16 @@ export default function DriverDetails({ data, onSave }) {
         {errors.name && <p className='text-danger'>Name is required</p>}
       </Form.Group>
 
+      <Form.Group controlId='contactNumber'>
+        <Form.Label>Contact Number</Form.Label>
+        <Form.Control
+          type='text'
+          placeholder='Enter Your Contact Number'
+          defaultValue={data?.data?.[0]?.flatData?.contactNumber || ""}
+          {...register("contactNumber", { required: true })}
+        />
+        {errors.email && <p className='text-danger'>Contact is required</p>}
+      </Form.Group>
       <Form.Group controlId='email'>
         <Form.Label>Email</Form.Label>
         <Form.Control
@@ -67,6 +79,16 @@ export default function DriverDetails({ data, onSave }) {
           {...register("email", { required: true })}
         />
         {errors.email && <p className='text-danger'>Email is required</p>}
+      </Form.Group>
+      <Form.Group controlId='license'>
+        <Form.Label>License</Form.Label>
+        <Form.Control
+          type='text'
+          placeholder='Enter license number'
+          defaultValue={data?.data?.[0]?.flatData?.license || ""}
+          {...register("license", { required: true })}
+        />
+        {errors.email && <p className='text-danger'>license is required</p>}
       </Form.Group>
 
       <Form.Label>Vehicle Type</Form.Label>
@@ -99,13 +121,13 @@ export default function DriverDetails({ data, onSave }) {
         />
       </Form.Group>
 
-      <Form.Group controlId='license'>
-        <Form.Label>License</Form.Label>
+      <Form.Group controlId='number'>
+        <Form.Label>Car Number</Form.Label>
         <Form.Control
           type='text'
-          placeholder='Enter license'
+          placeholder='Enter Car Number'
           defaultValue={data?.license || ""}
-          {...register("license")}
+          {...register("number")}
         />
       </Form.Group>
 

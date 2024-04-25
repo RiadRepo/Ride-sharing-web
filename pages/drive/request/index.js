@@ -57,7 +57,7 @@ export default function index({ data }) {
       <DriveNavBar />
 
       <div className='d-flex justify-content-center my-3'>
-        <h1>Car Requests</h1>
+        <h1>Requests</h1>
       </div>
       <div className='mb-5' style={{ minHeight: "400px" }}>
         {resState.length === 0 ? (
