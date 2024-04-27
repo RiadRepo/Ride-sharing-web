@@ -55,9 +55,9 @@ export default function NavBar({ register }) {
             <Nav.Link href='/help' className='text-white hover:underline'>
               Help
             </Nav.Link>
-            <Nav.Link href='/blog' className='text-white hover:underline'>
+            {/* <Nav.Link href='/blog' className='text-white hover:underline'>
               Blog
-            </Nav.Link>
+            </Nav.Link> */}
           </Nav>
 
           <Nav className='ml-auto'>

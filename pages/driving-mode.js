@@ -1,7 +1,9 @@
-import React from 'react'
+import DrivingMode from "@/Components/DrivingMode";
 
 export default function drivingmode() {
   return (
-    <div></div>
-  )
+    <div>
+      <DrivingMode />
+    </div>
+  );
 }
