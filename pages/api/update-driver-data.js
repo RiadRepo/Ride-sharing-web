@@ -4,10 +4,11 @@ import UPDATE_DRIVER_QUERY from "@/data/queries/update-driver";
 
 export default async function handler(req, res) {
   console.log(req.body);
-  const { ids, source, formData } = req.body;
+  const { ids, source, formData, myLocation } = req.body;
   let name = formData.name;
   let email = formData.email;
   let license = formData.license;
+  const contactNumber = formData.contactNumber;
   let vehicle = [
     {
       vehicleType: formData.vehicleType,
@@ -17,10 +18,7 @@ export default async function handler(req, res) {
     },
   ];
 
-  // let myLocation = {
-  //   latitude: 22.3752075,
-  //   longitude: 91.8348606,
-  // };
+  console.log(ids, email, name, license, vehicle, typeof myLocation);
 
   try {
     const authClient = await authApiClient();
@@ -32,7 +30,8 @@ export default async function handler(req, res) {
         name,
         license,
         vehicle,
-        // myLocation,
+        contactNumber,
+        myLocation,
       },
     });
     console.log(dataDrive);

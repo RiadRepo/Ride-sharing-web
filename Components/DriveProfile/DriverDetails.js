@@ -18,13 +18,36 @@ export default function DriverDetails({ data, onSave }) {
     formState: { errors },
     reset,
   } = useForm();
-  console.log(data?.data?.[0]?.id);
+  console.log(data?.data?.[0]);
   const { source, setSource } = useContext(SourceContext);
+  let myLocation = {};
+
+  // if (source && source.lat && source.lng) {
+  //   myLocation = {
+  //     latitude: source.lat,
+  //     longitude: source.lng,
+  //   };
+  // } else if (data?.data?.[0]?.myLocation) {
+  //   myLocation = data.data[0].myLocation;
+  // }
+
   const onSubmit = async (formData) => {
+    console.log(data?.data?.[0]?.flatData?.myLocation);
+    if (source.length > 0 && source.lat && source.lng) {
+      myLocation = {
+        latitude: source.lat,
+        longitude: source.lng,
+      };
+    } else if (data?.data?.[0]?.flatData?.myLocation) {
+      console.log(data?.data?.[0]?.flatData?.myLocation);
+      myLocation = data?.data?.[0]?.flatData?.myLocation;
+    }
+
     let driverData = {
       ids: data?.data?.[0]?.id,
       source: source,
       formData: formData,
+      myLocation: myLocation,
     };
 
     try {
