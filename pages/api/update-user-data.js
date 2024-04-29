@@ -1,35 +1,23 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { authApiClient } from "@/data/apollo-client";
-import UPDATE_DRIVER_QUERY from "@/data/queries/update-driver";
+import UPDATE_USER_QUERY from "@/data/queries/update-user";
 
 export default async function handler(req, res) {
   console.log(req.body);
-  const { ids, source, formData, myLocation } = req.body;
-  let name = formData.name;
-  let email = formData.email;
-  let license = formData.license;
-  const contactNumber = formData.contactNumber;
-  let vehicle = [
-    {
-      vehicleType: formData.vehicleType,
-      model: formData.model,
-      number: formData.number,
-      level: "after verified Approved",
-    },
-  ];
+  const { ids, formData } = req.body;
+  let userName = formData.name;
 
-  console.log(ids, email, name, license, vehicle, typeof myLocation);
+  const contactNumber = formData.contactNumber;
+
+  console.log(ids, userName, contactNumber);
 
   try {
     const authClient = await authApiClient();
     const { dataDrive, errors } = await authClient.mutate({
-      mutation: UPDATE_DRIVER_QUERY,
+      mutation: UPDATE_USER_QUERY,
       variables: {
         ids,
-        email,
-        name,
-        license,
-        vehicle,
+        userName,
         contactNumber,
         // myLocation,
       },

@@ -7,7 +7,6 @@ const UPDATE_DRIVER_QUERY = gql`
     $license: String
     $contactNumber: String
     $vehicle: [DriverDataVehicleChildInputDto!]
-    $myLocation: JsonScalar
   ) {
     patchDriverContent(
       id: $ids
@@ -17,7 +16,6 @@ const UPDATE_DRIVER_QUERY = gql`
         contactNumber: { iv: $contactNumber }
         license: { iv: $license }
         vehicle: { iv: $vehicle }
-        myLocation: { iv: $myLocation }
       }
       expectedVersion: -2
     ) {

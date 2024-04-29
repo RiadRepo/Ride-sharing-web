@@ -8,7 +8,6 @@ const ADD_REQ_QUERY = gql`
     $destinationName: String
     $sourceName: String
     $vehicleType: String
-    $sources: JsonScalar
   ) {
     createRequestContent(
       data: {
@@ -19,7 +18,6 @@ const ADD_REQ_QUERY = gql`
         destinationName: { iv: $destinationName }
         sourceName: { iv: $sourceName }
         vehicleType: { iv: $vehicleType }
-        sources: { iv: $sources }
       }
       publish: true
     ) {
@@ -30,7 +28,7 @@ const ADD_REQ_QUERY = gql`
         fare
         email
         destinationName
-        sourceName
+
         vehicleType
       }
     }

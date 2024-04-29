@@ -27,11 +27,11 @@ export default async function handler(req, res) {
       },
       fetchPolicy: "no-cache",
     });
-    console.log(value);
-    if (value.length > 0) {
+    console.log("test req", value);
+    if (value.queryRequestContents.length > 0) {
       res.status(200).json({
         message: "Thank you for your response.",
-        data: data?.queryRequestContents,
+        data: value?.queryRequestContents,
       });
     } else {
       res.status(201).json({

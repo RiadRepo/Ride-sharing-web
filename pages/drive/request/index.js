@@ -2,8 +2,6 @@
 import DriveFooter from "@/Components/DriveFooter";
 import DriveNavBar from "@/Components/DriveNavBar";
 import CarRequest from "@/Components/Request/CarRequest";
-import apiClient from "@/data/apollo-client";
-import REQ_VIEW_QUERY from "@/data/queries/reqView";
 import axios from "axios";
 import { getAuth } from "firebase/auth";
 import { useEffect, useState } from "react";
@@ -27,7 +25,7 @@ export default function index({ data }) {
         const response = await axios.post(url, { email });
         console.log(response);
         if (response.status === 200) {
-          setResState(response.data);
+          setResState(response.data.data);
         }
         if (!response?.data?.companyUser) router.push("/driver-login");
         // if (token) {
@@ -52,6 +50,7 @@ export default function index({ data }) {
     setSelectedRequest(request);
   };
 
+  console.log(resState);
   return (
     <div>
       <DriveNavBar />
@@ -61,7 +60,7 @@ export default function index({ data }) {
       </div>
       <div className='mb-5' style={{ minHeight: "400px" }}>
         {resState.length === 0 ? (
-          <p className="text-center mb-5 pb-5">You don't have any request.</p>
+          <p className='text-center mb-5 pb-5'>You don't have any request.</p>
         ) : (
           resState.map((request, index) => (
             <CarRequest
@@ -76,6 +75,4 @@ export default function index({ data }) {
       <DriveFooter />
     </div>
   );
-
 }
-

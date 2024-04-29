@@ -6,6 +6,7 @@ const GET_USER_QUERY = gql`
       flatData {
         userName
         email
+        contactNumber
       }
     }
   }
