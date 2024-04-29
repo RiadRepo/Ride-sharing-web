@@ -2,20 +2,20 @@ import { gql } from "@apollo/client";
 const UPDATE_DRIVER_QUERY = gql`
   mutation (
     $ids: String
-    $email: String
     $name: String
     $license: String
     $contactNumber: String
+    
     $vehicle: [DriverDataVehicleChildInputDto!]
   ) {
     patchDriverContent(
       id: $ids
       data: {
-        email: { iv: $email }
         name: { iv: $name }
         contactNumber: { iv: $contactNumber }
         license: { iv: $license }
         vehicle: { iv: $vehicle }
+        
       }
       expectedVersion: -2
     ) {

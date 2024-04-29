@@ -18,7 +18,7 @@ export default async function handler(req, res) {
     data?.queryDriverContents[0]?.flatData.vehicle[0].vehicleType
   );
   if (data?.queryDriverContents[0]?.flatData?.myLocation?.latitude) {
-    const Filter = `geo.distance(data/sources/iv, geography'POINT(${data?.queryDriverContents[0]?.flatData?.myLocation?.longitude} ${data?.queryDriverContents[0]?.flatData?.myLocation?.latitude})') lt 5000 and data/vehicleType/iv eq '${data?.queryDriverContents[0]?.flatData.vehicle[0].vehicleType}'`;
+    const Filter = `geo.distance(data/sources/iv, geography'POINT(${data?.queryDriverContents[0]?.flatData?.myLocation?.longitude} ${data?.queryDriverContents[0]?.flatData?.myLocation?.latitude})') lt 5000 and data/vehicleType/iv eq '${data?.queryDriverContents[0]?.flatData.vehicle[0].vehicleType}' and data/isPending/iv eq false`;
     console.log(Filter);
     const { data: value, errors } = await apiClient().query({
       query: REQ_VIEW_QUERY,

@@ -4,9 +4,9 @@ import UPDATE_DRIVER_QUERY from "@/data/queries/update-driver";
 
 export default async function handler(req, res) {
   console.log(req.body);
-  const { ids, source, formData, myLocation } = req.body;
+  const { ids, source, formData } = req.body;
   let name = formData.name;
-  let email = formData.email;
+  // let email = formData.email;
   let license = formData.license;
   const contactNumber = formData.contactNumber;
   let vehicle = [
@@ -17,8 +17,13 @@ export default async function handler(req, res) {
       level: "after verified Approved",
     },
   ];
+  // let myLocation = {
+  //   latitude: 23.804139164305827,
+  //   longitude: 90.4139526644176,
+  // };
+  // myLocation: { iv: $myLocation } $myLocation: JsonScalar
 
-  console.log(ids, email, name, license, vehicle, typeof myLocation);
+  console.log(ids, name, license, vehicle, typeof myLocation);
 
   try {
     const authClient = await authApiClient();
@@ -26,7 +31,7 @@ export default async function handler(req, res) {
       mutation: UPDATE_DRIVER_QUERY,
       variables: {
         ids,
-        email,
+        // email,
         name,
         license,
         vehicle,

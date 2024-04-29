@@ -98,10 +98,11 @@ export default function DriverDetails({ data, onSave }) {
         <Form.Control
           type='email'
           placeholder='Enter email'
-          defaultValue={data?.data?.[0]?.flatData?.email || ""}
-          {...register("email", { required: true })}
+          defaultValue={data?.data?.[0]?.flatData?.email}
+          {...register("email")}
+          readOnly
+          disabled
         />
-        {errors.email && <p className='text-danger'>Email is required</p>}
       </Form.Group>
       <Form.Group controlId='license'>
         <Form.Label>License</Form.Label>
@@ -120,7 +121,7 @@ export default function DriverDetails({ data, onSave }) {
         {...register("vehicleType", {
           required: true,
         })}
-        defaultValue={data?.flatData?.vehicleType || ""}
+        defaultValue={data?.data?.[0]?.flatData?.vehicle[0]?.vehicleType || ""}
       >
         <option value='' disabled>
           Choose vehicle type
@@ -139,7 +140,7 @@ export default function DriverDetails({ data, onSave }) {
         <Form.Control
           type='text'
           placeholder='Enter model'
-          defaultValue={data?.model || ""}
+          defaultValue={data?.data?.[0]?.flatData?.vehicle[0]?.model || ""}
           {...register("model")}
         />
       </Form.Group>
@@ -149,7 +150,7 @@ export default function DriverDetails({ data, onSave }) {
         <Form.Control
           type='text'
           placeholder='Enter Car Number'
-          defaultValue={data?.license || ""}
+          defaultValue={data?.data?.[0]?.flatData?.vehicle[0]?.number || ""}
           {...register("number")}
         />
       </Form.Group>

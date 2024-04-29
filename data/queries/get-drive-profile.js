@@ -6,10 +6,14 @@ const GET_DRIVE_QUERY = gql`
       flatData {
         name
         email
+        contactNumber
         myLocation
         isVerified
+        license
         vehicle {
           vehicleType
+          model
+          number
         }
       }
     }

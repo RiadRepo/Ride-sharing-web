@@ -1,16 +1,16 @@
 import { gql } from "@apollo/client";
-const UPDATE_DRIVER_QUERY = gql`
-  mutation ($ids: String, $IsPending: Boolean) {
+const UPDATE_REQ_QUERY = gql`
+  mutation ($id: String, $isPending: Boolean) {
     patchRequestContent(
-      id: $ids
-      data: { IsPending: { iv: $IsPending } }
+      id: $id
+      data: { isPending: { iv: $isPending } }
       expectedVersion: -2
     ) {
       id
       flatData {
-        IsPending
+        isPending
       }
     }
   }
 `;
-export default UPDATE_DRIVER_QUERY;
+export default UPDATE_REQ_QUERY;

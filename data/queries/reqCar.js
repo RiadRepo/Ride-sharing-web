@@ -28,7 +28,7 @@ const ADD_REQ_QUERY = gql`
         fare
         email
         destinationName
-
+        isPending
         vehicleType
       }
     }
