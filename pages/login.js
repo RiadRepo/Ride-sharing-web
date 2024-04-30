@@ -1,4 +1,6 @@
 // login.js
+import Footer from "@/Components/Footer";
+import NavBar from "@/Components/NavBar";
 import {
   GoogleAuthProvider,
   getAuth,
@@ -9,8 +11,6 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import app from "../firebaseConfig"; // Import the Firebase configuration
-import NavBar from "@/Components/NavBar";
-import Footer from "@/Components/Footer";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -39,6 +39,33 @@ export default function Login() {
       const user = result.user;
 
       sessionStorage.setItem("Token", user.accessToken);
+
+      try {
+        const apiResponse = await fetch("/api/new-user-profile", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: user.email,
+            userName: user.displayName,
+            // user: user
+            // Include the user's email
+            // Add any additional data you want to send
+          }),
+        });
+        console.log(apiResponse);
+        if (apiResponse.ok) {
+          router.push("/");
+        } else {
+          // Handle API error response
+          alert("API call failed test");
+        }
+      } catch (err) {
+        // Handle fetch error
+        console.error("Error fetching data:", err);
+        alert("API call failed catch");
+      }
       router.push("/");
     } catch (error) {
       console.error("Google Sign-In Error:", error.message);

@@ -16,10 +16,8 @@ export default async function handler(req, res) {
       },
       fetchPolicy: "no-cache",
     });
-
-    console.log(data.queryDriverContents.length);
-
-    if (data.queryDriverContents.length <= 0) {
+    console.log(email, userName);
+    if (data.queryUsersContents.length <= 0) {
       const authClient = await authApiClient();
       const { dataDrive, errors } = await authClient.mutate({
         mutation: ADD_USER_QUERY,
@@ -28,7 +26,7 @@ export default async function handler(req, res) {
           userName,
         },
       });
-
+      console.log("user", data.queryUsersContents.length, dataDrive);
       if (errors) {
         res.status(400).json({
           message: "Something went wrong with the server!",
@@ -39,12 +37,12 @@ export default async function handler(req, res) {
       console.log("testing data", dataDrive);
       res.status(200).json({
         message: "Thank you for your response. driver has been added!",
-        data: dataDrive?.queryDriverContents,
+        data: dataDrive?.queryUsersContents,
       });
     } else {
       res.status(200).json({
         message: "Thank you for your response. Driver has been already added!",
-        data: data?.queryDriverContents,
+        data: data?.queryUsersContents,
       });
     }
   } catch (error) {

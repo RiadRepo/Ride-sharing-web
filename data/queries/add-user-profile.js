@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 const ADD_USER_QUERY = gql`
   mutation ($email: String, $userName: String) {
-    createUsersContents(
+    createUsersContent(
       data: { email: { iv: $email }, userName: { iv: $userName } }
       publish: true
     ) {
