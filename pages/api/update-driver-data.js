@@ -1,12 +1,12 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { authApiClient } from "@/data/apollo-client";
-import UPDATE_DRIVER_QUERY from "@/data/queries/update-driver";
+import { gql } from "@apollo/client";
 
 export default async function handler(req, res) {
   console.log(req.body);
   const { ids, source, formData } = req.body;
+
   let name = formData.name;
-  // let email = formData.email;
   let license = formData.license;
   const contactNumber = formData.contactNumber;
   let vehicle = [
@@ -17,28 +17,60 @@ export default async function handler(req, res) {
       level: "after verified Approved",
     },
   ];
-  // let myLocation = {
-  //   latitude: 23.804139164305827,
-  //   longitude: 90.4139526644176,
-  // };
-  // myLocation: { iv: $myLocation } $myLocation: JsonScalar
+  // let myLocation = { iv: { latitude: 21.8714189, longitude: 90.87141892 } }; // Define myLocation as a JSON object
+  const latitude = source.lat;
+  const longitude = source.lng;
 
-  console.log(ids, name, license, vehicle, typeof myLocation);
+  console.log(ids, name, license, vehicle);
 
   try {
     const authClient = await authApiClient();
     const { dataDrive, errors } = await authClient.mutate({
-      mutation: UPDATE_DRIVER_QUERY,
+      mutation: gql`
+        mutation (
+          $ids: String
+          $name: String
+          $license: String
+          $contactNumber: String
+          $vehicle: [DriverDataVehicleChildInputDto!]
+        ) {
+          patchDriverContent(
+            id: $ids
+            data: {
+              name: { iv: $name }
+              contactNumber: { iv: $contactNumber }
+              license: { iv: $license }
+              vehicle: { iv: $vehicle }
+              myLocation: {
+                iv: { latitude: ${latitude}, longitude: ${longitude} }
+              }
+            }
+            expectedVersion: -2
+          ) {
+            id
+            flatData {
+              name
+              email
+              license
+              contactNumber
+              myLocation
+              isVerified
+              vehicle {
+                vehicleType
+              }
+            }
+          }
+        }
+      `,
       variables: {
         ids,
-        // email,
         name,
         license,
         vehicle,
         contactNumber,
-        // myLocation,
       },
     });
+
     console.log(dataDrive);
     if (errors) {
       res.status(400).json({
@@ -52,17 +84,10 @@ export default async function handler(req, res) {
       message: "Thank you for your response. driver has been added!",
       data: dataDrive?.queryDriverContents,
     });
-    // } else {
-    //   res.status(200).json({
-    //     message: "Thank you for your response. Driver has been already added!",
-    //     data: data?.queryDriverContents,
-    //   });
-    // }
   } catch (error) {
     console.error("Error:", error);
     res.status(500).json({
       message: "Internal server error",
     });
   }
-  res.status(200).json({ name: "John Doe" });
 }
