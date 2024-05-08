@@ -7,7 +7,7 @@ import {
 } from "@react-google-maps/api";
 import { useContext, useEffect, useState } from "react";
 
-export default function MyLoaction() {
+export default function MyLoaction({ location }) {
   const { source } = useContext(SourceContext);
   const [center, setCenter] = useState({ lat: -3.745, lng: -38.523 });
 

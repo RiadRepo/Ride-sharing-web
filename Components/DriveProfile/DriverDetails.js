@@ -21,7 +21,7 @@ export default function DriverDetails({ data, onSave }) {
   console.log(data?.data?.[0]);
   const { source, setSource } = useContext(SourceContext);
   let myLocation = {};
-
+  let location = data?.data?.[0]?.flatData?.myLocation;
   // if (source && source.lat && source.lng) {
   //   myLocation = {
   //     latitude: source.lat,
@@ -78,7 +78,7 @@ export default function DriverDetails({ data, onSave }) {
           type='text'
           placeholder='Enter name'
           defaultValue={data?.data?.[0]?.flatData?.name || ""}
-          {...register("name", { required: true })}
+          {...register("name")}
         />
         {errors.name && <p className='text-danger'>Name is required</p>}
       </Form.Group>
@@ -158,7 +158,7 @@ export default function DriverDetails({ data, onSave }) {
       <Form.Label>My Location</Form.Label>
 
       <InputSource />
-      <MyLoaction />
+      <MyLoaction location={location} />
       <Button variant='primary' type='submit'>
         Save
       </Button>
