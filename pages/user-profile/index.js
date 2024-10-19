@@ -18,6 +18,7 @@ export default function index() {
     const fetchData = async () => {
       try {
         let token = sessionStorage.getItem("Token");
+        console.log(user)
         const email = user?.email;
 
         const url = `/api/user-details`;
