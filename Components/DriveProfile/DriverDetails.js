@@ -118,10 +118,8 @@ export default function DriverDetails({ data, onSave }) {
       <Form.Label>Vehicle Type</Form.Label>
       <Form.Select
         style={{ maxWidth: "500px", height: "40px" }}
-        {...register("vehicleType", {
-          required: true,
-        })}
-        defaultValue={data?.data?.[0]?.flatData?.vehicle[0]?.vehicleType || ""}
+        {...register("vehicleType", { required: true })}
+        defaultValue={data?.data?.[0]?.flatData?.vehicle?.[0]?.vehicleType || ""}
       >
         <option value='' disabled>
           Choose vehicle type
@@ -131,6 +129,7 @@ export default function DriverDetails({ data, onSave }) {
         <option value='ambulance'>Ambulance</option>
         <option value='cng'>CNG</option>
       </Form.Select>
+
       {errors?.vehicleType && (
         <p style={{ color: "red" }}>Please select a vehicle type.</p>
       )}
@@ -140,7 +139,7 @@ export default function DriverDetails({ data, onSave }) {
         <Form.Control
           type='text'
           placeholder='Enter model'
-          defaultValue={data?.data?.[0]?.flatData?.vehicle[0]?.model || ""}
+          defaultValue={data?.data?.[0]?.flatData?.vehicle?.[0]?.model || ""}
           {...register("model")}
         />
       </Form.Group>
@@ -150,7 +149,7 @@ export default function DriverDetails({ data, onSave }) {
         <Form.Control
           type='text'
           placeholder='Enter Car Number'
-          defaultValue={data?.data?.[0]?.flatData?.vehicle[0]?.number || ""}
+          defaultValue={data?.data?.[0]?.flatData?.vehicle?.[0]?.number || ""}
           {...register("number")}
         />
       </Form.Group>

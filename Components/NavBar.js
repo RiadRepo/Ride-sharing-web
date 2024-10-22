@@ -21,7 +21,10 @@ export default function NavBar({ register }) {
   }, []);
 
   const logout = () => {
+    // Remove items from sessionStorage and localStorage
     sessionStorage.removeItem("Token");
+    localStorage.removeItem("userEmail"); // Assuming user email is stored in localStorage as 'userEmail'
+
     router.push("/login");
   };
 
@@ -46,39 +49,21 @@ export default function NavBar({ register }) {
             <Nav.Link href='/drive' className='text-white'>
               Drive
             </Nav.Link>
-            <Nav.Link
-              href='/earn-with-share-ride'
-              className='text-white hover:underline'
-            >
-              Earn
-            </Nav.Link>
             <Nav.Link href='/help' className='text-white hover:underline'>
               Help
             </Nav.Link>
-            {/* <Nav.Link href='/blog' className='text-white hover:underline'>
-              Blog
-            </Nav.Link> */}
           </Nav>
 
           <Nav className='ml-auto'>
             {isLoggedIn ? (
               <>
-                {/* {register === "user" && ( */}
                 <Nav.Link
                   href='/user-profile'
                   className='text-white border rounded-5'
                 >
                   User Profile
                 </Nav.Link>
-                {/* )} */}
-                {/* {register === "driver" && (
-                  <Nav.Link
-                    href='/drive-profile'
-                    className='text-white border rounded-5'
-                  >
-                    Driver Profile
-                  </Nav.Link>
-                )} */}
+
                 <button
                   onClick={logout}
                   type='button'

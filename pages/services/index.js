@@ -21,22 +21,28 @@ export default function Index() {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (user) {
-        let token = sessionStorage.getItem("Token");
-        console.log("User token:", user);
+      let token = sessionStorage.getItem("Token");
+      let storedData = localStorage.getItem("rideInfo"); // Example local storage key
 
-        const email = user?.email;
+      if (storedData) {
+        storedData = JSON.parse(storedData); // Parse the local storage data if stored as JSON
+      }
+
+      if (token && user) {
+        console.log("User token:", user);
+        const email = user.email;
+
         const url = `/api/ride-check-data`;
 
         try {
-          const response = await axios.post(url, { email });
-          console.log(response.data.data.leangth > 0);
-
-
-          if (response.status === 200 && response.data.data.length > 0) {
+          const response = await axios.post(url, {
+            email,
+            storedData // Pass the local storage data to the API
+          });
+          console.log(response)
+          if (response.status === 200) {
             setResState(response.data);
             router.push("/riding-mode");
-
           }
         } catch (err) {
           console.error("Error fetching ride-check-data:", err);

@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { Button } from "react-bootstrap";
 
-export default function DrivingMode() {
+export default function RidingMode() {
   const router = useRouter(); // Initialize history object
 
   const handleEndTrip = () => {

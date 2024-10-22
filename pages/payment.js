@@ -1,3 +1,5 @@
+import Footer from "@/Components/Footer";
+import NavBar from "@/Components/NavBar";
 import { useRouter } from "next/router";
 import { Button } from "react-bootstrap";
 
@@ -10,12 +12,17 @@ export default function payment() {
     router.push("/finish"); // Replace "/finish" with the route to your finish page
   };
   return (
-    <div className='text-center py-5'>
-      <h1>Payment</h1>
-      <img src='/image/payment.jpg' alt='Loading...' height={500} width={500} />
-      <Button variant='danger' className='w-75 mb-2' onClick={handleEndTrip}>
-        Done
-      </Button>
-    </div>
+    <>
+      <NavBar />
+      <div className='text-center py-5'>
+        <h1>Payment</h1>
+        <img src='/image/payment.jpg' alt='Loading...' height={500} width={500} />
+        <Button variant='danger' className='w-75 mb-2' onClick={handleEndTrip}>
+          Done
+        </Button>
+      </div>
+      <Footer />
+    </>
+
   );
 }
