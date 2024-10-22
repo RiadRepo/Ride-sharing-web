@@ -8,6 +8,7 @@ export default async function handler(req, res) {
   //   let userName = formData.name;
 
   console.log(id, isPending);
+  let isFinish = true
 
   try {
     const authClient = await authApiClient();
@@ -16,7 +17,7 @@ export default async function handler(req, res) {
       variables: {
         id,
         isPending,
-
+        isFinish,
         // myLocation,
       },
     });

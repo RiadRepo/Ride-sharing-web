@@ -9,7 +9,7 @@ export default async function handler(req, res) {
     //   let userName = formData.name;
 
     console.log(email, isPending);
-    const filter = `data/email/iv eq '${email}' and data/isPending/iv ne true`;
+    const filter = `data/email/iv eq '${email}' and data/isPending/iv ne true and data/isFinish/iv ne true`;
     try {
         const { data, errors } = await apiClient().query({
             query: REQ_CHECK_VIEW_QUERY,
